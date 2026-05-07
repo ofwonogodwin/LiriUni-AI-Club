@@ -6,6 +6,7 @@
   --brand: #c44f2b;
   --brand-dark: #94361b;
   --accent: #0c7a6a;
+  --quote-text: #2a3042;
   --line: #e6d6bf;
   --shadow: 0 12px 30px rgba(30, 29, 24, 0.12);
 }
@@ -166,7 +167,7 @@ h1 {
 
 #daily-quote {
   margin: 0;
-  color: #2a3042;
+  color: var(--quote-text);
   font-weight: 700;
 }
 
