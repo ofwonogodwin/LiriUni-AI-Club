@@ -50,6 +50,20 @@ if (yearSpan) {
 
 if (dailyDate && dailyMonth && dailyQuote) {
   const now = new Date();
+  const monthNames = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ];
   const dateParts = new Intl.DateTimeFormat('en-US', {
     timeZone: 'Africa/Kampala',
     year: 'numeric',
@@ -62,17 +76,8 @@ if (dailyDate && dailyMonth && dailyQuote) {
   const dayNumber = Math.floor(Date.UTC(year, month - 1, day) / 86400000);
   const quoteIndex = dayNumber % quotes.length;
 
-  dailyDate.textContent = new Intl.DateTimeFormat('en-GB', {
-    timeZone: 'Africa/Kampala',
-    day: '2-digit',
-    month: 'long',
-    year: 'numeric'
-  }).format(now);
-
-  dailyMonth.textContent = new Intl.DateTimeFormat('en-US', {
-    timeZone: 'Africa/Kampala',
-    month: 'long'
-  }).format(now);
+  dailyDate.textContent = String(day).padStart(2, '0');
+  dailyMonth.textContent = monthNames[month - 1];
 
   dailyQuote.textContent = `“${quotes[quoteIndex]}”`;
 }
