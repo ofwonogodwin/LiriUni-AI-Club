@@ -50,8 +50,16 @@ if (yearSpan) {
 
 if (dailyDate && dailyMonth && dailyQuote) {
   const now = new Date();
-  const dateKey = new Intl.DateTimeFormat('en-CA', { timeZone: 'Africa/Kampala' }).format(now);
-  const dayNumber = Math.floor(new Date(`${dateKey}T00:00:00Z`).getTime() / 86400000);
+  const dateParts = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Africa/Kampala',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  }).formatToParts(now);
+  const year = Number(dateParts.find((part) => part.type === 'year')?.value);
+  const month = Number(dateParts.find((part) => part.type === 'month')?.value);
+  const day = Number(dateParts.find((part) => part.type === 'day')?.value);
+  const dayNumber = Math.floor(Date.UTC(year, month - 1, day) / 86400000);
   const quoteIndex = dayNumber % quotes.length;
 
   dailyDate.textContent = new Intl.DateTimeFormat('en-GB', {

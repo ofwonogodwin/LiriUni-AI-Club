@@ -171,6 +171,16 @@ h1 {
   font-weight: 700;
 }
 
+.daily-quote-wrap {
+  margin: 0;
+}
+
+.daily-quote-wrap figcaption {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
 .btn {
   text-decoration: none;
   border: none;
