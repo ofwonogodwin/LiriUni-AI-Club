@@ -70,11 +70,18 @@ if (dailyDate && dailyMonth && dailyQuote) {
     month: '2-digit',
     day: '2-digit'
   }).formatToParts(now);
-  const year = Number(dateParts.find((part) => part.type === 'year')?.value);
-  const month = Number(dateParts.find((part) => part.type === 'month')?.value);
-  const day = Number(dateParts.find((part) => part.type === 'day')?.value);
-  const dayNumber = Math.floor(Date.UTC(year, month - 1, day) / 86400000);
-  const quoteIndex = dayNumber % quotes.length;
+  const parts = dateParts.reduce((acc, part) => {
+    if (part.type === 'year' || part.type === 'month' || part.type === 'day') {
+      acc[part.type] = part.value;
+    }
+    return acc;
+  }, {});
+  const year = Number(parts.year);
+  const month = Number(parts.month);
+  const day = Number(parts.day);
+  const dateKey = `${parts.year}-${parts.month}-${parts.day}`;
+  const quoteSeed = [...dateKey].reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const quoteIndex = quoteSeed % quotes.length;
 
   dailyDate.textContent = String(day).padStart(2, '0');
   dailyMonth.textContent = monthNames[month - 1];
