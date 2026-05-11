@@ -6,6 +6,7 @@
   --brand: #c44f2b;
   --brand-dark: #94361b;
   --accent: #0c7a6a;
+  --quote-text: #2a3042;
   --line: #e6d6bf;
   --shadow: 0 12px 30px rgba(30, 29, 24, 0.12);
 }
@@ -137,6 +138,47 @@ h1 {
   gap: 0.8rem;
   margin-top: 1.4rem;
   flex-wrap: wrap;
+}
+
+.daily-update {
+  margin-bottom: 2.2rem;
+}
+
+.daily-update-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 1.2rem;
+  border-left: 5px solid var(--brand);
+}
+
+.daily-update-card h3 {
+  margin-bottom: 0.65rem;
+}
+
+.daily-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  color: var(--muted);
+  margin: 0 0 0.7rem;
+}
+
+#daily-quote {
+  margin: 0;
+  color: var(--quote-text);
+  font-weight: 700;
+}
+
+.daily-quote-wrap {
+  margin: 0;
+}
+
+.daily-quote-wrap figcaption {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--muted);
 }
 
 .btn {
